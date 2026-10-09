@@ -10,33 +10,185 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/app'
+import { Route as CadastroRouteImport } from './routes/cadastro'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as RecuperarSenhaRouteImport } from './routes/recuperar-senha'
+import { Route as AppCarteiraRouteImport } from './routes/app.carteira'
+import { Route as AppFclubRouteImport } from './routes/app.fclub'
+import { Route as AppFworldsRouteImport } from './routes/app.fworlds'
+import { Route as AppInicioRouteImport } from './routes/app.inicio'
+import { Route as AppNotificacoesRouteImport } from './routes/app.notificacoes'
+import { Route as AppPerfilRouteImport } from './routes/app.perfil'
+import { Route as AppFcardsIndexRouteImport } from './routes/app.fcards.index'
+import { Route as AppFcardsIdRouteImport } from './routes/app.fcards.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadastroRoute = CadastroRouteImport.update({
+  id: '/cadastro',
+  path: '/cadastro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecuperarSenhaRoute = RecuperarSenhaRouteImport.update({
+  id: '/recuperar-senha',
+  path: '/recuperar-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppCarteiraRoute = AppCarteiraRouteImport.update({
+  id: '/carteira',
+  path: '/carteira',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFclubRoute = AppFclubRouteImport.update({
+  id: '/fclub',
+  path: '/fclub',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFworldsRoute = AppFworldsRouteImport.update({
+  id: '/fworlds',
+  path: '/fworlds',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInicioRoute = AppInicioRouteImport.update({
+  id: '/inicio',
+  path: '/inicio',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppNotificacoesRoute = AppNotificacoesRouteImport.update({
+  id: '/notificacoes',
+  path: '/notificacoes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPerfilRoute = AppPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFcardsIndexRoute = AppFcardsIndexRouteImport.update({
+  id: '/fcards/',
+  path: '/fcards/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFcardsIdRoute = AppFcardsIdRouteImport.update({
+  id: '/fcards/$id',
+  path: '/fcards/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/app/carteira': typeof AppCarteiraRoute
+  '/app/fclub': typeof AppFclubRoute
+  '/app/fworlds': typeof AppFworldsRoute
+  '/app/inicio': typeof AppInicioRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
+  '/app/perfil': typeof AppPerfilRoute
+  '/app/fcards/$id': typeof AppFcardsIdRoute
+  '/app/fcards/': typeof AppFcardsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/app/carteira': typeof AppCarteiraRoute
+  '/app/fclub': typeof AppFclubRoute
+  '/app/fworlds': typeof AppFworldsRoute
+  '/app/inicio': typeof AppInicioRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
+  '/app/perfil': typeof AppPerfilRoute
+  '/app/fcards/$id': typeof AppFcardsIdRoute
+  '/app/fcards': typeof AppFcardsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/app/carteira': typeof AppCarteiraRoute
+  '/app/fclub': typeof AppFclubRoute
+  '/app/fworlds': typeof AppFworldsRoute
+  '/app/inicio': typeof AppInicioRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
+  '/app/perfil': typeof AppPerfilRoute
+  '/app/fcards/$id': typeof AppFcardsIdRoute
+  '/app/fcards/': typeof AppFcardsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/cadastro'
+    | '/login'
+    | '/recuperar-senha'
+    | '/app/carteira'
+    | '/app/fclub'
+    | '/app/fworlds'
+    | '/app/inicio'
+    | '/app/notificacoes'
+    | '/app/perfil'
+    | '/app/fcards/$id'
+    | '/app/fcards/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/app'
+    | '/cadastro'
+    | '/login'
+    | '/recuperar-senha'
+    | '/app/carteira'
+    | '/app/fclub'
+    | '/app/fworlds'
+    | '/app/inicio'
+    | '/app/notificacoes'
+    | '/app/perfil'
+    | '/app/fcards/$id'
+    | '/app/fcards'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/cadastro'
+    | '/login'
+    | '/recuperar-senha'
+    | '/app/carteira'
+    | '/app/fclub'
+    | '/app/fworlds'
+    | '/app/inicio'
+    | '/app/notificacoes'
+    | '/app/perfil'
+    | '/app/fcards/$id'
+    | '/app/fcards/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
+  CadastroRoute: typeof CadastroRoute
+  LoginRoute: typeof LoginRoute
+  RecuperarSenhaRoute: typeof RecuperarSenhaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +200,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadastro': {
+      id: '/cadastro'
+      path: '/cadastro'
+      fullPath: '/cadastro'
+      preLoaderRoute: typeof CadastroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recuperar-senha': {
+      id: '/recuperar-senha'
+      path: '/recuperar-senha'
+      fullPath: '/recuperar-senha'
+      preLoaderRoute: typeof RecuperarSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/carteira': {
+      id: '/app/carteira'
+      path: '/carteira'
+      fullPath: '/app/carteira'
+      preLoaderRoute: typeof AppCarteiraRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/fclub': {
+      id: '/app/fclub'
+      path: '/fclub'
+      fullPath: '/app/fclub'
+      preLoaderRoute: typeof AppFclubRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/fworlds': {
+      id: '/app/fworlds'
+      path: '/fworlds'
+      fullPath: '/app/fworlds'
+      preLoaderRoute: typeof AppFworldsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/inicio': {
+      id: '/app/inicio'
+      path: '/inicio'
+      fullPath: '/app/inicio'
+      preLoaderRoute: typeof AppInicioRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/notificacoes': {
+      id: '/app/notificacoes'
+      path: '/notificacoes'
+      fullPath: '/app/notificacoes'
+      preLoaderRoute: typeof AppNotificacoesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/perfil': {
+      id: '/app/perfil'
+      path: '/perfil'
+      fullPath: '/app/perfil'
+      preLoaderRoute: typeof AppPerfilRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/fcards/': {
+      id: '/app/fcards/'
+      path: '/fcards'
+      fullPath: '/app/fcards/'
+      preLoaderRoute: typeof AppFcardsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/fcards/$id': {
+      id: '/app/fcards/$id'
+      path: '/fcards/$id'
+      fullPath: '/app/fcards/$id'
+      preLoaderRoute: typeof AppFcardsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppCarteiraRoute: typeof AppCarteiraRoute
+  AppFclubRoute: typeof AppFclubRoute
+  AppFworldsRoute: typeof AppFworldsRoute
+  AppInicioRoute: typeof AppInicioRoute
+  AppNotificacoesRoute: typeof AppNotificacoesRoute
+  AppPerfilRoute: typeof AppPerfilRoute
+  AppFcardsIdRoute: typeof AppFcardsIdRoute
+  AppFcardsIndexRoute: typeof AppFcardsIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppCarteiraRoute: AppCarteiraRoute,
+  AppFclubRoute: AppFclubRoute,
+  AppFworldsRoute: AppFworldsRoute,
+  AppInicioRoute: AppInicioRoute,
+  AppNotificacoesRoute: AppNotificacoesRoute,
+  AppPerfilRoute: AppPerfilRoute,
+  AppFcardsIdRoute: AppFcardsIdRoute,
+  AppFcardsIndexRoute: AppFcardsIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
+  CadastroRoute: CadastroRoute,
+  LoginRoute: LoginRoute,
+  RecuperarSenhaRoute: RecuperarSenhaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
