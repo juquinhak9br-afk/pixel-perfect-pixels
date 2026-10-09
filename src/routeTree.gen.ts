@@ -20,6 +20,8 @@ import { Route as AppFworldsRouteImport } from './routes/app.fworlds'
 import { Route as AppInicioRouteImport } from './routes/app.inicio'
 import { Route as AppNotificacoesRouteImport } from './routes/app.notificacoes'
 import { Route as AppPerfilRouteImport } from './routes/app.perfil'
+import { Route as LojaDashboardRouteImport } from './routes/loja.dashboard'
+import { Route as LojaLoginRouteImport } from './routes/loja.login'
 import { Route as AppFcardsIndexRouteImport } from './routes/app.fcards.index'
 import { Route as AppFcardsIdRouteImport } from './routes/app.fcards.$id'
 
@@ -78,6 +80,16 @@ const AppPerfilRoute = AppPerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => AppRoute,
 } as any)
+const LojaDashboardRoute = LojaDashboardRouteImport.update({
+  id: '/loja/dashboard',
+  path: '/loja/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LojaLoginRoute = LojaLoginRouteImport.update({
+  id: '/loja/login',
+  path: '/loja/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppFcardsIndexRoute = AppFcardsIndexRouteImport.update({
   id: '/fcards/',
   path: '/fcards/',
@@ -101,6 +113,8 @@ export interface FileRoutesByFullPath {
   '/app/inicio': typeof AppInicioRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/perfil': typeof AppPerfilRoute
+  '/loja/dashboard': typeof LojaDashboardRoute
+  '/loja/login': typeof LojaLoginRoute
   '/app/fcards/$id': typeof AppFcardsIdRoute
   '/app/fcards/': typeof AppFcardsIndexRoute
 }
@@ -116,6 +130,8 @@ export interface FileRoutesByTo {
   '/app/inicio': typeof AppInicioRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/perfil': typeof AppPerfilRoute
+  '/loja/dashboard': typeof LojaDashboardRoute
+  '/loja/login': typeof LojaLoginRoute
   '/app/fcards/$id': typeof AppFcardsIdRoute
   '/app/fcards': typeof AppFcardsIndexRoute
 }
@@ -132,6 +148,8 @@ export interface FileRoutesById {
   '/app/inicio': typeof AppInicioRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/perfil': typeof AppPerfilRoute
+  '/loja/dashboard': typeof LojaDashboardRoute
+  '/loja/login': typeof LojaLoginRoute
   '/app/fcards/$id': typeof AppFcardsIdRoute
   '/app/fcards/': typeof AppFcardsIndexRoute
 }
@@ -149,6 +167,8 @@ export interface FileRouteTypes {
     | '/app/inicio'
     | '/app/notificacoes'
     | '/app/perfil'
+    | '/loja/dashboard'
+    | '/loja/login'
     | '/app/fcards/$id'
     | '/app/fcards/'
   fileRoutesByTo: FileRoutesByTo
@@ -164,6 +184,8 @@ export interface FileRouteTypes {
     | '/app/inicio'
     | '/app/notificacoes'
     | '/app/perfil'
+    | '/loja/dashboard'
+    | '/loja/login'
     | '/app/fcards/$id'
     | '/app/fcards'
   id:
@@ -179,6 +201,8 @@ export interface FileRouteTypes {
     | '/app/inicio'
     | '/app/notificacoes'
     | '/app/perfil'
+    | '/loja/dashboard'
+    | '/loja/login'
     | '/app/fcards/$id'
     | '/app/fcards/'
   fileRoutesById: FileRoutesById
@@ -189,6 +213,8 @@ export interface RootRouteChildren {
   CadastroRoute: typeof CadastroRoute
   LoginRoute: typeof LoginRoute
   RecuperarSenhaRoute: typeof RecuperarSenhaRoute
+  LojaDashboardRoute: typeof LojaDashboardRoute
+  LojaLoginRoute: typeof LojaLoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -270,6 +296,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPerfilRouteImport
       parentRoute: typeof AppRoute
     }
+    '/loja/dashboard': {
+      id: '/loja/dashboard'
+      path: '/loja/dashboard'
+      fullPath: '/loja/dashboard'
+      preLoaderRoute: typeof LojaDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loja/login': {
+      id: '/loja/login'
+      path: '/loja/login'
+      fullPath: '/loja/login'
+      preLoaderRoute: typeof LojaLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/fcards/': {
       id: '/app/fcards/'
       path: '/fcards'
@@ -317,6 +357,8 @@ const rootRouteChildren: RootRouteChildren = {
   CadastroRoute: CadastroRoute,
   LoginRoute: LoginRoute,
   RecuperarSenhaRoute: RecuperarSenhaRoute,
+  LojaDashboardRoute: LojaDashboardRoute,
+  LojaLoginRoute: LojaLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
